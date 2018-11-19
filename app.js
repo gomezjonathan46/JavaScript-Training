@@ -1,21 +1,11 @@
-let age = prompt("How old are you?");
+let randomNum = Math.floor(Math.random() * 11);
 
-if (age < 18) {
-  alert("You cannot enter the venue.")
-} else if (age < 21) {
-  alert("You can enter, but cannot drink.")
+let guess = Number(prompt("Guess a number!"));
+
+if (guess === randomNum) {
+  alert("You guessed it!")
+} else if (guess > randomNum) {
+  alert("Too high!")
 } else {
-  alert("You can enter and drink.")
-}
-
-if (age < 0) {
-  alert("Error: You haven't even been born yet.")
-}
-
-if (age == 21) {
-  alert("Happy 21st Birthday!!")
-}
-
-if (age % 2 === 1) {
-  alert("Your age is odd!")
+  alert("Too low!")
 }
