@@ -1,11 +1,19 @@
-let randomNum = Math.floor(Math.random() * 11);
+console.log("Print odd numbers between 300 and 333.");
+let num = 300;
 
-let guess = Number(prompt("Guess a number!"));
+while (num <= 333) {
+  if (num % 2 === 1) {
+    console.log(num);
+  }
+  num++;
+}
 
-if (guess === randomNum) {
-  alert("You guessed it!")
-} else if (guess > randomNum) {
-  alert("Too high!")
-} else {
-  alert("Too low!")
+console.log("Print numbers divisible by 5 and 3 between 5 and 50.");
+let num2 = 5;
+
+while (num2 <= 50) {
+  if ((num2 % 5 === 0) && (num2 % 3 === 0)) {
+    console.log(num2);
+  }
+  num2++
 }
