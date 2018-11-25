@@ -1,19 +1,33 @@
-function isEven(num) {
-  return num % 2 === 0;
-}
-
-function factorial(num) {
-  if (num === 0) {
-    return 1;
-  } else {
-    let solution = 1;
-    for (let i = 2; i <= num; i++) {
-      solution *= i;
-    }
-    return solution;
+function printReverse(list) {
+  for (let i = list.length - 1; i >= 0; i--) {
+    console.log(list[i]);
   }
 }
-function kebabToSnake(string) {
-  let newStr = string.replace(/-/g, "_");
-  return newStr
+
+function isUniform(list) {
+  let firstItem = list[0];
+  for (let i = 1; i < list.length; i++) {
+    if (firstItem !== list[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function sumArray(array) {
+  let sum = 0;
+  array.forEach(function(arrayItem) {
+    sum += arrayItem;
+  })
+  return sum;
+}
+
+function max(array) {
+  let max = 0;
+  for (let i = 1; i < array.length; i++) {
+    if (max < array[i]) {
+      max = array[i];
+    }
+  }
+  return max;
 }
