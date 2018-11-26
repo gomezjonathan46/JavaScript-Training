@@ -38,7 +38,7 @@ let movies = [
 //*** His solution ***
 
 function buildString(movie) {
-  let result = "You have";
+  let result = "You have ";
   if (movie.hasWatched) {
     result += "watched ";
   } else {
