@@ -1,33 +1,54 @@
-function printReverse(list) {
-  for (let i = list.length - 1; i >= 0; i--) {
-    console.log(list[i]);
+let movies = [
+  {
+    title: "Incredibles 2",
+    rating: 4.7,
+    hasWatched: true
+  },
+
+  {
+    title: "Robin Hood",
+    rating: 4.0,
+    hasWatched: true
+  },
+
+  {
+    title: "Mad Max Fury Road",
+    rating: 5,
+    hasWatched: true
+  },
+
+  {
+    title: "Les Miserables",
+    rating: 3.5,
+    hasWatched: false
   }
+]
+
+//*** My solution ***
+
+// for (var i = 0; i < movies.length; i++) {
+//   if (movies[i].hasWatched === true) {
+//     console.log("You have watched " + "\"" + movies[i].title + "\" - " + movies[i].rating.toFixed(1));
+//   } else {
+//     console.log("You have not seen " + "\"" + movies[i].title + "\" - " + movies[i].rating.toFixed(1));
+//   }
+// }
+
+
+//*** His solution ***
+
+function buildString(movie) {
+  let result = "You have";
+  if (movie.hasWatched) {
+    result += "watched ";
+  } else {
+    result += "not seen ";
+  }
+  result += "\"" + movie.title + "\" - ";
+  result += movie.rating.toFixed(1);
+  return result;
 }
 
-function isUniform(list) {
-  let firstItem = list[0];
-  for (let i = 1; i < list.length; i++) {
-    if (firstItem !== list[i]) {
-      return false;
-    }
-  }
-  return true;
-}
-
-function sumArray(array) {
-  let sum = 0;
-  array.forEach(function(arrayItem) {
-    sum += arrayItem;
-  })
-  return sum;
-}
-
-function max(array) {
-  let max = 0;
-  for (let i = 1; i < array.length; i++) {
-    if (max < array[i]) {
-      max = array[i];
-    }
-  }
-  return max;
-}
+movies.forEach(function(movie) {
+  console.log(buildString(movie));
+})
