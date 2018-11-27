@@ -46,9 +46,14 @@ playerTwo.addEventListener("click", function() {
 // Update max score
 maxScoreInput.addEventListener('change', function() {
   maxScore.textContent = maxScoreInput.value;
+  resetBoard();
 })
 
 reset.addEventListener("click", function() {
+  resetBoard();
+})
+
+function resetBoard() {
   // Reset scoreboard counter
   playerOneScoreBoard = 0;
   playerTwoScoreBoard = 0;
@@ -63,4 +68,4 @@ reset.addEventListener("click", function() {
   // Turn score text black
   playerOneScore.classList.remove("green");
   playerTwoScore.classList.remove("green");
-})
+}
