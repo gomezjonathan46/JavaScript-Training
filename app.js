@@ -15,6 +15,9 @@ const maxScoreInput = document.querySelector("input");
 let playerOneScoreBoard = 0;
 let playerTwoScoreBoard = 0;
 
+// Variable to end game 
+let endGame = false;
+
 // Events
 // Player one score increase
 playerOne.addEventListener("click", function() {
