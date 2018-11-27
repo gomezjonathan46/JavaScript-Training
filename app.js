@@ -7,3 +7,20 @@ const reset = document.getElementsByTagName('button')[2];
 const playerOneScore = document.getElementsByClassName('player')[0];
 const playerTwoScore = document.getElementsByClassName('player')[1];
 const maxScore = document.querySelector(".maxScore");
+
+// Score board
+let playerOneScoreBoard = 0;
+let playerTwoScoreBoard = 0;
+
+// Events
+// Player one score increase
+playerOne.addEventListener("click", function() {
+  playerOneScore.textContent = Number(playerOneScore.textContent) + 1;
+  playerOneScoreBoard++
+});
+
+// Player two score increase
+playerTwo.addEventListener("click", function() {
+  playerTwoScore.textContent = Number(playerTwoScore.textContent) + 1;
+  playerTwoScoreBoard++
+});
