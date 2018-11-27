@@ -22,6 +22,9 @@ playerOne.addEventListener("click", function() {
     playerOneScore.textContent = Number(playerOneScore.textContent) + 1;
     playerOneScoreBoard++
   }
+  if (playerOneScoreBoard == Number(maxScore.textContent)) {
+    playerOneScore.classList.add("green");
+  }
 });
 
 // Player two score increase
@@ -29,6 +32,9 @@ playerTwo.addEventListener("click", function() {
   if (playerTwoScoreBoard < Number(maxScore.textContent)) {
     playerTwoScore.textContent = Number(playerTwoScore.textContent) + 1;
     playerTwoScoreBoard++
+  }
+  if (playerTwoScoreBoard == Number(maxScore.textContent)) {
+    playerTwoScore.classList.add("green");
   }
 });
 
