@@ -18,12 +18,21 @@ let playerTwoScoreBoard = 0;
 // Events
 // Player one score increase
 playerOne.addEventListener("click", function() {
-  playerOneScore.textContent = Number(playerOneScore.textContent) + 1;
-  playerOneScoreBoard++
+  if (playerOneScoreBoard < Number(maxScore.textContent)) {
+    playerOneScore.textContent = Number(playerOneScore.textContent) + 1;
+    playerOneScoreBoard++
+  }
 });
 
 // Player two score increase
 playerTwo.addEventListener("click", function() {
-  playerTwoScore.textContent = Number(playerTwoScore.textContent) + 1;
-  playerTwoScoreBoard++
+  if (playerTwoScoreBoard < Number(maxScore.textContent)) {
+    playerTwoScore.textContent = Number(playerTwoScore.textContent) + 1;
+    playerTwoScoreBoard++
+  }
 });
+
+// Update max score
+maxScoreInput.addEventListener('click', function() {
+  maxScore.textContent = maxScoreInput.value;
+})
