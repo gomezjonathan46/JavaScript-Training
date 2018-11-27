@@ -15,29 +15,31 @@ const maxScoreInput = document.querySelector("input");
 let playerOneScoreBoard = 0;
 let playerTwoScoreBoard = 0;
 
-// Variable to end game 
+// Variable to end game
 let endGame = false;
 
 // Events
 // Player one score increase
 playerOne.addEventListener("click", function() {
-  if (playerOneScoreBoard < Number(maxScore.textContent)) {
+  if (playerOneScoreBoard < Number(maxScore.textContent) && endGame === false) {
     playerOneScore.textContent = Number(playerOneScore.textContent) + 1;
     playerOneScoreBoard++
   }
   if (playerOneScoreBoard == Number(maxScore.textContent)) {
     playerOneScore.classList.add("green");
+    endGame = true;
   }
 });
 
 // Player two score increase
 playerTwo.addEventListener("click", function() {
-  if (playerTwoScoreBoard < Number(maxScore.textContent)) {
+  if (playerTwoScoreBoard < Number(maxScore.textContent) && endGame === false) {
     playerTwoScore.textContent = Number(playerTwoScore.textContent) + 1;
     playerTwoScoreBoard++
   }
   if (playerTwoScoreBoard == Number(maxScore.textContent)) {
     playerTwoScore.classList.add("green");
+    endGame = true;
   }
 });
 
