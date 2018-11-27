@@ -24,10 +24,10 @@ playerOne.addEventListener("click", function() {
   if (playerOneScoreBoard < Number(maxScore.textContent) && endGame === false) {
     playerOneScore.textContent = Number(playerOneScore.textContent) + 1;
     playerOneScoreBoard++
-  }
-  if (playerOneScoreBoard == Number(maxScore.textContent)) {
-    playerOneScore.classList.add("green");
-    endGame = true;
+    if (playerOneScoreBoard == Number(maxScore.textContent)) {
+      playerOneScore.classList.add("green");
+      endGame = true;
+    }
   }
 });
 
@@ -36,14 +36,31 @@ playerTwo.addEventListener("click", function() {
   if (playerTwoScoreBoard < Number(maxScore.textContent) && endGame === false) {
     playerTwoScore.textContent = Number(playerTwoScore.textContent) + 1;
     playerTwoScoreBoard++
-  }
-  if (playerTwoScoreBoard == Number(maxScore.textContent)) {
-    playerTwoScore.classList.add("green");
-    endGame = true;
+    if (playerTwoScoreBoard == Number(maxScore.textContent)) {
+      playerTwoScore.classList.add("green");
+      endGame = true;
+    }
   }
 });
 
 // Update max score
-maxScoreInput.addEventListener('click', function() {
+maxScoreInput.addEventListener('change', function() {
   maxScore.textContent = maxScoreInput.value;
+})
+
+reset.addEventListener("click", function() {
+  // Reset scoreboard counter
+  playerOneScoreBoard = 0;
+  playerTwoScoreBoard = 0;
+
+  // Reset end game boolean
+  endGame = false;
+
+  // Reset player score board text
+  playerOneScore.textContent = 0;
+  playerTwoScore.textContent = 0;
+
+  // Turn score text black
+  playerOneScore.classList.remove("green");
+  playerTwoScore.classList.remove("green");
 })
