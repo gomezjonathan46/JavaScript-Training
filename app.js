@@ -8,6 +8,9 @@ const playerOneScore = document.getElementsByClassName('player')[0];
 const playerTwoScore = document.getElementsByClassName('player')[1];
 const maxScore = document.querySelector(".maxScore");
 
+// Max score input
+const maxScoreInput = document.querySelector("input");
+
 // Score board
 let playerOneScoreBoard = 0;
 let playerTwoScoreBoard = 0;
