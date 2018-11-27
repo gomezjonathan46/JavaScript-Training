@@ -1,54 +1,19 @@
-let movies = [
-  {
-    title: "Incredibles 2",
-    rating: 4.7,
-    hasWatched: true
-  },
+let button = document.getElementsByTagName('button')[0];
+let body = document.getElementsByTagName('body')[0];
 
-  {
-    title: "Robin Hood",
-    rating: 4.0,
-    hasWatched: true
-  },
+// First solution
+let purpleBackground = false;
 
-  {
-    title: "Mad Max Fury Road",
-    rating: 5,
-    hasWatched: true
-  },
-
-  {
-    title: "Les Miserables",
-    rating: 3.5,
-    hasWatched: false
-  }
-]
-
-//*** My solution ***
-
-// for (var i = 0; i < movies.length; i++) {
-//   if (movies[i].hasWatched === true) {
-//     console.log("You have watched " + "\"" + movies[i].title + "\" - " + movies[i].rating.toFixed(1));
-//   } else {
-//     console.log("You have not seen " + "\"" + movies[i].title + "\" - " + movies[i].rating.toFixed(1));
-//   }
-// }
-
-
-//*** His solution ***
-
-function buildString(movie) {
-  let result = "You have ";
-  if (movie.hasWatched) {
-    result += "watched ";
+button.addEventListener('click', function() {
+  if (purpleBackground) {
+    body.style.background = "white";
   } else {
-    result += "not seen ";
+    body.style.background = "purple";
   }
-  result += "\"" + movie.title + "\" - ";
-  result += movie.rating.toFixed(1);
-  return result;
-}
-
-movies.forEach(function(movie) {
-  console.log(buildString(movie));
+  purpleBackground = !purpleBackground;
 })
+
+// Second solution
+// button.addEventListener("click", function() {
+//   body.classList.toggle('purpleBackground')
+// })
