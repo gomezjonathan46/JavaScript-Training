@@ -1,54 +1,71 @@
-let movies = [
-  {
-    title: "Incredibles 2",
-    rating: 4.7,
-    hasWatched: true
-  },
+// Buttons
+const playerOne = document.getElementsByTagName('button')[0];
+const playerTwo = document.getElementsByTagName('button')[1];
+const reset = document.getElementsByTagName('button')[2];
 
-  {
-    title: "Robin Hood",
-    rating: 4.0,
-    hasWatched: true
-  },
+// Score
+const playerOneScore = document.getElementsByClassName('player')[0];
+const playerTwoScore = document.getElementsByClassName('player')[1];
+const maxScore = document.querySelector(".maxScore");
 
-  {
-    title: "Mad Max Fury Road",
-    rating: 5,
-    hasWatched: true
-  },
+// Max score input
+const maxScoreInput = document.querySelector("input");
 
-  {
-    title: "Les Miserables",
-    rating: 3.5,
-    hasWatched: false
+// Score board
+let playerOneScoreBoard = 0;
+let playerTwoScoreBoard = 0;
+
+// Variable to end game
+let endGame = false;
+
+// Events
+// Player one score increase
+playerOne.addEventListener("click", function() {
+  if (playerOneScoreBoard < Number(maxScore.textContent) && endGame === false) {
+    playerOneScore.textContent = Number(playerOneScore.textContent) + 1;
+    playerOneScoreBoard++
+    if (playerOneScoreBoard == Number(maxScore.textContent)) {
+      playerOneScore.classList.add("green");
+      endGame = true;
+    }
   }
-]
+});
 
-//*** My solution ***
-
-// for (var i = 0; i < movies.length; i++) {
-//   if (movies[i].hasWatched === true) {
-//     console.log("You have watched " + "\"" + movies[i].title + "\" - " + movies[i].rating.toFixed(1));
-//   } else {
-//     console.log("You have not seen " + "\"" + movies[i].title + "\" - " + movies[i].rating.toFixed(1));
-//   }
-// }
-
-
-//*** His solution ***
-
-function buildString(movie) {
-  let result = "You have ";
-  if (movie.hasWatched) {
-    result += "watched ";
-  } else {
-    result += "not seen ";
+// Player two score increase
+playerTwo.addEventListener("click", function() {
+  if (playerTwoScoreBoard < Number(maxScore.textContent) && endGame === false) {
+    playerTwoScore.textContent = Number(playerTwoScore.textContent) + 1;
+    playerTwoScoreBoard++
+    if (playerTwoScoreBoard == Number(maxScore.textContent)) {
+      playerTwoScore.classList.add("green");
+      endGame = true;
+    }
   }
-  result += "\"" + movie.title + "\" - ";
-  result += movie.rating.toFixed(1);
-  return result;
-}
+});
 
-movies.forEach(function(movie) {
-  console.log(buildString(movie));
+// Update max score
+maxScoreInput.addEventListener('change', function() {
+  maxScore.textContent = maxScoreInput.value;
+  resetBoard();
 })
+
+reset.addEventListener("click", function() {
+  resetBoard();
+})
+
+function resetBoard() {
+  // Reset scoreboard counter
+  playerOneScoreBoard = 0;
+  playerTwoScoreBoard = 0;
+
+  // Reset end game boolean
+  endGame = false;
+
+  // Reset player score board text
+  playerOneScore.textContent = 0;
+  playerTwoScore.textContent = 0;
+
+  // Turn score text black
+  playerOneScore.classList.remove("green");
+  playerTwoScore.classList.remove("green");
+}
