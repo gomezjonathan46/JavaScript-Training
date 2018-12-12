@@ -1,71 +1,29 @@
-// Buttons
-const playerOne = document.getElementsByTagName('button')[0];
-const playerTwo = document.getElementsByTagName('button')[1];
-const reset = document.getElementsByTagName('button')[2];
-
-// Score
-const playerOneScore = document.getElementsByClassName('player')[0];
-const playerTwoScore = document.getElementsByClassName('player')[1];
-const maxScore = document.querySelector(".maxScore");
-
-// Max score input
-const maxScoreInput = document.querySelector("input");
-
-// Score board
-let playerOneScoreBoard = 0;
-let playerTwoScoreBoard = 0;
-
-// Variable to end game
-let endGame = false;
-
-// Events
-// Player one score increase
-playerOne.addEventListener("click", function() {
-  if (playerOneScoreBoard < Number(maxScore.textContent) && endGame === false) {
-    playerOneScore.textContent = Number(playerOneScore.textContent) + 1;
-    playerOneScoreBoard++
-    if (playerOneScoreBoard == Number(maxScore.textContent)) {
-      playerOneScore.classList.add("green");
-      endGame = true;
+function dirReduc(arr) {
+  let dirNums = arr.join(',').replace(/NORTH/g, 1).replace(/SOUTH/g, -1).replace(/EAST/g, 2).replace(/WEST/g, -2).split(','), cDirs = Array();
+  for(var i = 0; i < arr.length; i++){
+    if(Number(dirNums[i]) + Number(dirNums[i+1]) != 0 && Number(dirNums[i]) + Number(dirNums[i-1]) != 0){
+      if(Number(cDirs[cDirs.length - 1]) + Number(dirNums[i]) != 0){
+        cDirs.push(dirNums[i]);
+      }
+      else cDirs.pop();
     }
   }
-});
+  if(cDirs.length) cDirs = cDirs.join(',').replace(/-1/g, 'SOUTH').replace(/1/g, 'NORTH').replace(/-2/g, 'WEST').replace(/2/g, 'EAST').split(',')
+  return cDirs;
+}
 
-// Player two score increase
-playerTwo.addEventListener("click", function() {
-  if (playerTwoScoreBoard < Number(maxScore.textContent) && endGame === false) {
-    playerTwoScore.textContent = Number(playerTwoScore.textContent) + 1;
-    playerTwoScoreBoard++
-    if (playerTwoScoreBoard == Number(maxScore.textContent)) {
-      playerTwoScore.classList.add("green");
-      endGame = true;
-    }
+let arr = [];
+let directions = ['NORTH','SOUTH','EAST','WEST'];
+let min=0;
+let max=3;
+let minArrLength = 7;
+let maxArrLength = 13;
+let randomDir = Math.floor(Math.random() * (+max - +min)) + +min;
+let randomArrLength = Math.floor(Math.random() * (+maxArrLength - +minArrLength) + +minArrLength);
+
+function generateArr() {
+  for (let i = 0; i <= randomArrLength; i++) {
+    arr[i].push(directions[randomDir]);
   }
-});
-
-// Update max score
-maxScoreInput.addEventListener('change', function() {
-  maxScore.textContent = maxScoreInput.value;
-  resetBoard();
-})
-
-reset.addEventListener("click", function() {
-  resetBoard();
-})
-
-function resetBoard() {
-  // Reset scoreboard counter
-  playerOneScoreBoard = 0;
-  playerTwoScoreBoard = 0;
-
-  // Reset end game boolean
-  endGame = false;
-
-  // Reset player score board text
-  playerOneScore.textContent = 0;
-  playerTwoScore.textContent = 0;
-
-  // Turn score text black
-  playerOneScore.classList.remove("green");
-  playerTwoScore.classList.remove("green");
+  return arr;
 }
