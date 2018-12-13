@@ -1,20 +1,10 @@
-function isSortedAndHow(array) {
-  if (array[0] >= array[1]) {
-    for (let i = 1; i < array.length; i++) {
-      if (array[i] <= array[i-1] === false) {
-        return "no";
-      }
+function validParentheses(parens) {
+  let length = parens.split('').length;
+  if (length % 2 === 0) {
+    for (let i = 0; i <= length/2; i++) {
+      parens = parens.replace(/\(\)/g, '');
     }
-    return "yes, descending";
+    return parens === "";
   }
-  if (array[0] <= array[1]) {
-    for (let i = 1; i < array.length; i++) {
-      if (array[i] >= array[i-1] === false) {
-        return "no";
-      }
-    }
-    return "yes, ascending";
-  }
-  return "no"
+  return false;
 }
- 
