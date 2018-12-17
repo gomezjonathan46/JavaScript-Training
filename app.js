@@ -1,10 +1,15 @@
-function validParentheses(parens) {
-  let length = parens.split('').length;
-  if (length % 2 === 0) {
-    for (let i = 0; i <= length/2; i++) {
-      parens = parens.replace(/\(\)/g, '');
+function count (string) {
+  let strCopy = string.toLowerCase().replace(' ','').split('').sort();
+  let count = 1;
+  let object = {};
+
+  for (let letter in strCopy) {
+    if (strCopy[letter] === strCopy[letter-1]) {
+      count++;
+    } else {
+      count = 1;
     }
-    return parens === "";
+    object[strCopy[letter]] = count;
   }
-  return false;
+  return object;
 }
